@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Team Portfolio Landing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const memberLinks = [
+            "http://localhost:8080/",
+            "bianca-lee.html",
+            "carlos-rivera.html",
+            "dana-smith.html"
+        ];
+        document.querySelectorAll('.member-card').forEach((card, idx) => {
+            card.addEventListener('click', function() {
+                window.location.href = memberLinks[idx];
+            });
+        });
+    });
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            animation: fadeInDown 1s cubic-bezier(.68,-0.55,.27,1.55);
+        }
+        p {
+            color: #e0e0e0;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s 0.5s cubic-bezier(.68,-0.55,.27,1.55) backwards;
+        }
+        .members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        .member-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            width: 260px;
+            padding: 30px 20px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.4s;
+            cursor: pointer;
+            animation: cardPop 1s cubic-bezier(.68,-0.55,.27,1.55);
+        }
+        .member-card:hover {
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 16px 48px 0 rgba(31, 38, 135, 0.47);
+        }
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6dd5ed 0%, #2193b0 100%);
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(33,147,176,0.2);
+            animation: avatarBounce 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+        }
+        .member-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .member-role {
+            font-size: 1rem;
+            color: #b3e0ff;
+            margin-bottom: 12px;
+        }
+        .member-desc {
+            font-size: 0.98rem;
+            color: #e0e0e0;
+            margin-bottom: 0;
+        }
+        /* Animations */
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-40px);}
+            100% { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(40px);}
+            100% { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes cardPop {
+            0% { opacity: 0; transform: scale(0.7);}
+            100% { opacity: 1; transform: scale(1);}
+        }
+        @keyframes avatarBounce {
+            0% { transform: scale(0.5);}
+            60% { transform: scale(1.2);}
+            100% { transform: scale(1);}
+        }
+        /* Floating shapes for heavy animation */
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.25;
+            animation: floatShape 8s infinite alternate cubic-bezier(.68,-0.55,.27,1.55);
+            z-index: 1;
+        }
+        .shape1 { width: 180px; height: 180px; background: #6dd5ed; top: 10%; left: 5%; animation-delay: 0s;}
+        .shape2 { width: 120px; height: 120px; background: #2193b0; top: 70%; left: 80%; animation-delay: 2s;}
+        .shape3 { width: 90px; height: 90px; background: #b3e0ff; top: 60%; left: 15%; animation-delay: 1s;}
+        .shape4 { width: 140px; height: 140px; background: #1e3c72; top: 30%; left: 75%; animation-delay: 3s;}
+        @keyframes floatShape {
+            0% { transform: translateY(0) scale(1);}
+            100% { transform: translateY(-40px) scale(1.1);}
+        }
+        @media (max-width: 900px) {
+            .members { flex-direction: column; gap: 30px;}
+            .container { padding: 40px 10px;}
+        }
+    </style>
+</head>
+<body>
+
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+    <div class="shape shape3"></div>
+    <div class="shape shape4"></div>
+    <div class="container">
+        <h1>Meet Our Creative Team</h1>
+        <p>Welcome to our portfolio! Explore the work and profiles of our talented members.</p>
+        <div class="members">
+            <div class="member-card">
+                <div class="avatar">A</div>
+                <div class="member-name">Gowdam M</div>
+                <div class="member-role">Frontend Developer</div>
+                <div class="member-desc">Specializes in interactive UI and modern web technologies.</div>
+            </div>
+            <div class="member-card">
+                <div class="avatar">B</div>
+                <div class="member-name">Guru prassanna</div>
+                <div class="member-role">UI/UX Designer</div>
+                <div class="member-desc">Passionate about user-centric design and smooth experiences.</div>
+            </div>
+            <div class="member-card">
+                <div class="avatar">C</div>
+                <div class="member-name">Hanniya fahima</div>
+                <div class="member-role">Backend Engineer</div>
+                <div class="member-desc">Loves scalable systems and robust APIs.</div>
+            </div>
+            <div class="member-card">
+                <div class="avatar">D</div>
+                <div class="member-name">Sowbarnika</div>
+                <div class="member-role">Project Manager</div>
+                <div class="member-desc">Keeps the team on track and delivers results.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html></div>
